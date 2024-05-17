@@ -14,19 +14,6 @@ const getEpisodes = cache(async () => {
 
 export default async function Episodes() {
   const episodes = await getEpisodes()
-  console.log(episodes)
-  // Log the slices and their contents for each episode
-  episodes.forEach((episode) => {
-    console.log(`Episode ID: ${episode.id}, Slices:`, episode.data.slices)
-    episode.data.slices.forEach((slice) => {
-      console.log(`Slice ID: ${slice.id}, Title:`, slice.primary.title)
-      console.log(
-        `Slice ID: ${slice.id}, Description:`,
-        slice.primary.description,
-      )
-    })
-  })
-
   return (
     <article className="bg-gray-50 py-16 lg:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,18 +33,18 @@ export default async function Episodes() {
               </div>
 
               <div className="mt-4 flex flex-col">
-                <h1 className="mt-2 text-3xl font-bold text-slate-900 hover:text-indigo-600">
+                <div className="mt-2 text-3xl font-bold text-slate-900 hover:text-indigo-600">
                   <Link href={`/${episode.uid}`}>
                     <PrismicRichText
                       field={episode.data.slices[0]?.primary.title}
                     />
                   </Link>
-                </h1>
-                <p className="mt-3 text-lg leading-8 text-slate-700">
+                </div>
+                <div className="mt-3 text-lg leading-8 text-slate-700">
                   <PrismicRichText
                     field={episode.data.slices[0]?.primary.description}
                   />
-                </p>
+                </div>
               </div>
             </header>
             <hr className="my-8 border-gray-200" />

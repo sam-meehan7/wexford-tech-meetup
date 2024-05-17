@@ -15,7 +15,6 @@ export default async function Page({ params }: { params: Params }) {
 
   try {
     const episode = await client.getByUID('episode', params.uid)
-    console.log(episode)
     if (!episode) {
       return notFound()
     }
@@ -24,22 +23,22 @@ export default async function Page({ params }: { params: Params }) {
         <Container>
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <header className="mb-12">
-              <h1 className="mb-4 text-4xl font-bold text-slate-900">
+              <div className="mb-4 text-4xl font-bold text-slate-900">
                 <PrismicRichText
                   field={episode.data.slices[0]?.primary.title}
                 />
-              </h1>
+              </div>
               <FormattedDate
                 date={new Date()}
                 className="font-mono text-sm leading-7 text-slate-500"
               />
             </header>
             <section>
-              <p className="mb-6 text-lg font-medium leading-8 text-slate-700">
+              <div className="mb-6 text-lg font-medium leading-8 text-slate-700">
                 <PrismicRichText
                   field={episode.data.slices[0]?.primary.description}
                 />
-              </p>
+              </div>
             </section>
             <hr className="my-12 border-gray-200" />
           </div>
