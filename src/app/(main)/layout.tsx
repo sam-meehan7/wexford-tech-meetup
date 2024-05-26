@@ -6,8 +6,8 @@ import { AboutSection } from '@/components/AboutSection'
 import { AudioProvider } from '@/components/AudioProvider'
 import { AudioPlayer } from '@/components/player/AudioPlayer'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
-import { Waveform } from '@/components/Waveform'
 import posterImage from '@/images/poster.png'
+import { url } from 'inspector'
 
 function LinkedInIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -36,7 +36,12 @@ export default function MainLayout({
     <AudioProvider>
       <header className="bg-slate-50 lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-112 lg:items-start lg:overflow-y-auto xl:w-120">
         <div className="hidden lg:sticky lg:top-0 lg:flex lg:w-16 lg:flex-none lg:items-center lg:whitespace-nowrap lg:py-12 lg:text-sm lg:leading-7 lg:[writing-mode:vertical-rl]">
-          <span className="font-mono text-slate-500">Hosted by</span>
+          <Link
+            href={{ pathname: '/team' }}
+            className="font-mono text-slate-500"
+          >
+            Meet the team
+          </Link>
           <span className="mt-6 flex gap-6 font-bold text-slate-900">
             {hosts.map((host, hostIndex) => (
               <Fragment key={host}>
@@ -86,36 +91,50 @@ export default function MainLayout({
             >
               {(
                 [
-                  ['LinkedIn', LinkedInIcon],
-                  ['Meetup', PersonIcon],
+                  [
+                    'LinkedIn',
+                    LinkedInIcon,
+                    'https://www.linkedin.com/company/wexford-tech-meetup/posts/?feedView=all',
+                  ],
+                  [
+                    'Meetup',
+                    PersonIcon,
+                    'https://www.meetup.com/wexford-tech-meetup/',
+                  ],
                 ] as const
-              ).map(([label, Icon]) => (
-                <li key={label} className="flex">
-                  <Link
-                    href="/"
-                    className="group flex items-center"
-                    aria-label={label}
-                  >
-                    <Icon className="h-8 w-8 fill-slate-400 group-hover:fill-slate-600" />
-                    <span className="hidden sm:ml-3 sm:block">{label}</span>
-                  </Link>
-                </li>
-              ))}
+              )
+                .filter(([, , url]) => url)
+                .map(([label, Icon, url]) => (
+                  <li key={label} className="flex">
+                    <Link
+                      href={url!}
+                      className="group flex items-center"
+                      aria-label={label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Icon className="h-8 w-8 fill-slate-400 group-hover:fill-slate-600" />
+                      <span className="hidden sm:ml-3 sm:block">{label}</span>
+                    </Link>
+                  </li>
+                ))}
             </ul>
           </section>
         </div>
       </header>
       <main className="border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">
-        <Waveform className="absolute left-0 top-0 h-20 w-full" />
         <div className="relative">{children}</div>
       </main>
       <footer className="border-t border-slate-200 bg-slate-50 py-10 pb-40 sm:py-16 sm:pb-32 lg:hidden">
         <div className="mx-auto px-4 sm:px-6 md:max-w-2xl md:px-4">
           <AboutSection />
-          <h2 className="mt-8 flex items-center font-mono text-sm font-medium leading-7 text-slate-900">
+          <Link
+            href="/team"
+            className="mt-8 flex items-center font-mono text-sm font-medium leading-7 text-slate-900"
+          >
             <PersonIcon className="h-3 w-auto fill-slate-300" />
-            <span className="ml-2.5">Hosted by</span>
-          </h2>
+            <span className="ml-2.5">Meet the team</span>
+          </Link>
           <div className="mt-2 flex gap-6 text-sm font-bold leading-7 text-slate-900">
             {hosts.map((host, hostIndex) => (
               <Fragment key={host}>

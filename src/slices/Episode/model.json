@@ -25,9 +25,38 @@
           "type": "StructuredText",
           "config": {
             "label": "description",
-            "placeholder": "",
+            "placeholder": "Full event description",
             "allowTargetBlank": true,
             "multi": "paragraph"
+          }
+        },
+        "date": {
+          "type": "StructuredText",
+          "config": {
+            "label": "date",
+            "placeholder": "Jan 01, 2024",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "summary": {
+          "type": "StructuredText",
+          "config": {
+            "label": "summary",
+            "placeholder": "Summarised event description",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {
+              "width": 800,
+              "height": 600
+            },
+            "thumbnails": []
           }
         }
       },

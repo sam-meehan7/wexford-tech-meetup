@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* styles/globals.css or any other global CSS file */
+.gradient-text {
+  background: linear-gradient(90deg, #8a2be2, #ff00ff, #ff4500, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hover\:gradient-text:hover {
+  background: linear-gradient(90deg, #8a2be2, #ff00ff, #ff4500, #ffa500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

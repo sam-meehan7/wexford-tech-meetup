@@ -20,10 +20,55 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Exercitation sunt et Lorem cupidatat excepteur incididunt deserunt ut veniam qui. Occaecat velit magna occaecat aute cillum nostrud labore pariatur officia fugiat anim."
+							"text": "Lorem occaecat occaecat id in do fugiat irure non culpa nisi in non elit tempor dolore."
 						}
 					}
 				]
+			},
+			"date": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Irure qui culpa consectetur Lorem. Non nostrud velit cillum nulla veniam dolor elit occaecat dolore id labore. Ex aliquip aliquip do cillum deserunt sit."
+						}
+					}
+				]
+			},
+			"summary": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Incididunt minim cupidatat exercitation elit quis consequat enim fugiat elit culpa laboris proident mollit officia ad."
+						}
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+					"width": 4480,
+					"height": 4480
+				},
+				"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?rect=0%2C560%2C4480%2C3360&w=800&h=600",
+				"width": 800,
+				"height": 600,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 560
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
 			}
 		},
 		"items": [
