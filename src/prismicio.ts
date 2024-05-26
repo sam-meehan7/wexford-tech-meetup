@@ -13,7 +13,7 @@ export const repositoryName = 'wtmu'
 const routes: prismic.ClientConfig['routes'] = [
   {
     type: 'episode',
-    path: '/:uid',
+    path: '/event/:uid',
   },
 ]
 

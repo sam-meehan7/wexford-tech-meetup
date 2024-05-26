@@ -65,7 +65,68 @@ interface EpisodeDocumentData {
 export type EpisodeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EpisodeDocumentData>, 'episode', Lang>
 
-export type AllDocumentTypes = EpisodeDocument
+type TeamDocumentDataSlicesSlice = never
+
+/**
+ * Content for Team documents
+ */
+interface TeamDocumentData {
+  /**
+   * Slice Zone field in *Team*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TeamDocumentDataSlicesSlice> /**
+   * Meta Description field in *Team*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: team.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField
+
+  /**
+   * Meta Image field in *Team*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>
+
+  /**
+   * Meta Title field in *Team*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: team.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField
+}
+
+/**
+ * Team document from Prismic
+ *
+ * - **API ID**: `team`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TeamDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<TeamDocumentData>, 'team', Lang>
+
+export type AllDocumentTypes = EpisodeDocument | TeamDocument
 
 /**
  * Primary content in *Episode → Primary*
@@ -85,11 +146,41 @@ export interface EpisodeSliceDefaultPrimary {
    * description field in *Episode → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Full event description
    * - **API ID Path**: episode.primary.description
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   description: prismic.RichTextField
+
+  /**
+   * date field in *Episode → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Jan 01, 2024
+   * - **API ID Path**: episode.primary.date
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  date: prismic.RichTextField
+
+  /**
+   * summary field in *Episode → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Summarised event description
+   * - **API ID Path**: episode.primary.summary
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  summary: prismic.RichTextField
+
+  /**
+   * image field in *Episode → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: episode.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>
 }
 
 /**
@@ -132,6 +223,9 @@ declare module '@prismicio/client' {
       EpisodeDocument,
       EpisodeDocumentData,
       EpisodeDocumentDataSlicesSlice,
+      TeamDocument,
+      TeamDocumentData,
+      TeamDocumentDataSlicesSlice,
       AllDocumentTypes,
       EpisodeSlice,
       EpisodeSliceDefaultPrimary,
