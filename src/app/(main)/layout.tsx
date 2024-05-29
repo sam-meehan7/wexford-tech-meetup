@@ -7,6 +7,7 @@ import { AudioProvider } from '@/components/AudioProvider'
 import { AudioPlayer } from '@/components/player/AudioPlayer'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 import posterImage from '@/images/poster.png'
+
 import { url } from 'inspector'
 
 function LinkedInIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -30,7 +31,26 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
-  let hosts = ['Gary Meehan', 'Alan Moran', 'Scurri']
+  let hosts = [
+    <Link key="Gary Meehan" href="/team">
+      Gary Meehan
+    </Link>,
+    <Link key="Alan Moran" href="/team">
+      Alan Moran
+    </Link>,
+    <Link key="Colum" href="/team">
+      Colum
+    </Link>,
+    <Link key="James" href="/team">
+      James
+    </Link>,
+    <Link key="Sam Meehan" href="/team">
+      Sam Meehan
+    </Link>,
+    <Link key="Scurri" href="/team">
+      Scurri
+    </Link>,
+  ].sort()
 
   return (
     <AudioProvider>
