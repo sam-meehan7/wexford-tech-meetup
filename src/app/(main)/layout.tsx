@@ -31,26 +31,20 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
-  let hosts = [
-    <Link key="Gary Meehan" href="/team">
-      Gary Meehan
-    </Link>,
-    <Link key="Alan Moran" href="/team">
-      Alan Moran
-    </Link>,
-    <Link key="Colum" href="/team">
-      Colum
-    </Link>,
-    <Link key="James" href="/team">
-      James
-    </Link>,
-    <Link key="Sam Meehan" href="/team">
-      Sam Meehan
-    </Link>,
-    <Link key="Scurri" href="/team">
-      Scurri
-    </Link>,
+  let hostNames = [
+    'Gary Meehan',
+    'Alan Moran',
+    'Colum',
+    'James',
+    'Sam Meehan',
+    'Scurri',
   ].sort()
+
+  let hosts = hostNames.map((name) => (
+    <Link key={name} href="/team">
+      {name}
+    </Link>
+  ))
 
   return (
     <AudioProvider>
