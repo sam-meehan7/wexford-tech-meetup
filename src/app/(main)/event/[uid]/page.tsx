@@ -49,20 +49,14 @@ export default async function Page({ params }: { params: Params }) {
 
     // Convert the event date to a string in 'yyyy-mm-dd' format
     const eventDateString = eventDate.toISOString().split('T')[0]
-
-    console.log('today: ' + currentDateString)
-    console.log('event date: ' + eventDateString)
-
     // Determine if the event date is today or in the future
     const isFutureEvent = localISOTime >= currentDateString
 
-    console.log(isFutureEvent)
-
     return (
-      <article className="py-16 lg:py-36">
+      <article className="py-12 lg:py-24">
         <Container className="px-4 sm:px-6 lg:px-12">
           <div className="lg:px-8">
-            <header className="mb-12">
+            <header className="mb-8">
               <div className="mb-4 text-4xl font-bold text-slate-900">
                 <PrismicRichText
                   field={episode.data.slices[0]?.primary.title}
@@ -92,12 +86,11 @@ export default async function Page({ params }: { params: Params }) {
               )}
             </div>
             <h2 className="mb-4 text-3xl font-bold text-slate-900">Details</h2>
-            <section className="mb-6 text-lg font-medium leading-8 text-slate-700">
+            <section className="prose mb-6 text-lg font-medium leading-8 text-slate-700">
               <PrismicRichText
                 field={episode.data.slices[0]?.primary.description}
               />
             </section>
-            <hr className="my-12 border-gray-200" />
             {isFutureEvent && (
               <RSVPButton link="https://www.meetup.com/wexford-tech-meetup/events/?type=upcoming" />
             )}
