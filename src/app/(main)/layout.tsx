@@ -157,7 +157,7 @@ export default function MainLayout({
           </Link>
           <div className="mt-2 flex gap-6 text-sm font-bold leading-7 text-slate-900">
             {hosts.map((host, hostIndex) => (
-              <Fragment key={host}>
+              <Fragment key={hostIndex}>
                 {hostIndex !== 0 && (
                   <span aria-hidden="true" className="text-slate-400">
                     /
